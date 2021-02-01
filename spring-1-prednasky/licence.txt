@@ -1,0 +1,44 @@
+Licence - materiály ke školení, verze 1.1
+
+Copyright ©2009-2012 Jiøí Pinkas (http://www.javaskoleni.cz/). Všechna práva 
+vyhrazena.
+
+Tato licence je právní ujednání mezi Vámi a Jiøím Pinkasem pro potøeby 
+pouití materiálù ke školení, které zajišuje Jiøí Pinkas, tj. pøednášek, 
+zadání cvièení a programového kódu v pøíkladech ke cvièení nebo v pøednáškách, 
+které jsou poskytovány ke kurzùm poøádanım Jiøím Pinkasem (dále jen 
+"materiály ke školení").
+Získáním materiálù ke školení projevujete souhlas s tím, e jste tuto licenci 
+pøeèetli, porozumìli jí a budete jednat v souladu s podmínkami této licence.
+
+Pouití materiálù ke školení
+
+1) Materiály ke školení je povoleno pouívat pouze pro vlastní potøebu.
+2) Je zakázáno pouívat materiály ke školení k pøednášení, prezentování èi 
+   lektorské èinnosti bez pøedchozího písemného souhlasu Jiøího Pinkase.
+3) Programovı kód pøíkladù ze cvièení je povoleno upravovat a pouívat jako 
+   základ vašich vlastních projektù - knihoven a aplikací.
+4) V materiálech ke školení je nutné zachovávat vıše uvedenou informaci
+   o autorskıch právech, pokud je v nich uvedena.
+
+Odpovìdnost za pouití materiálù ke školení
+
+Souhlasíte s tím, e Jiøí Pinkas je zbaven 
+odpovìdnosti vùèi jakımkoliv pøímım, nepøímım, náhodnım nebo následnım odjinud 
+pocházejícím škodám a kryti pøed alobami nebo spory a všemi souvisejícími 
+náklady, závazky, odškodnìními, úhradami nebo poplatky souvisejícími s pouitím 
+materiálù ke školení.
+
+Záruka se neposkytuje
+
+MATERIÁLY KE ŠKOLENÍ JSOU POSKYTOVÁNY DRITELEM LICENCE A JEHO PØISPÌVATELI 
+"JAK STOJÍ A LEÍ" A JAKÉKOLIV VİSLOVNÉ NEBO PØEDPOKLÁDANÉ ZÁRUKY VÈETNÌ, ALE 
+NEJEN, PØEDPOKLÁDANİCH OBCHODNÍCH ZÁRUK A ZÁRUKY VHODNOSTI PRO JAKİKOLIV ÚÈEL 
+JSOU POPØENY. DRITEL, ANI PØISPÌVATELÉ NEBUDOU V ÁDNÉM PØÍPADÌ ODPOVÌDNI ZA 
+JAKÉKOLIV PØÍMÉ, NEPØÍMÉ, NÁHODNÉ, ZVLÁŠTNÍ, PØÍKLADNÉ NEBO VYPLİVAJÍCÍ ŠKODY 
+(VÈETNÌ, ALE NEJEN, ŠKOD VZNIKLİCH NARUŠENÍM DODÁVEK ZBOÍ NEBO SLUEB; ZTRÁTOU 
+POUITELNOSTI, DAT NEBO ZISKÙ; NEBO PØERUŠENÍM OBCHODNÍ ÈINNOSTI) JAKKOLIV 
+ZPÙSOBENÉ NA ZÁKLADÌ JAKÉKOLIV TEORIE O ZODPOVÌDNOSTI, A U PLYNOUCÍ Z JINÉHO 
+SMLUVNÍHO VZTAHU, URÈITÉ ZODPOVÌDNOSTI NEBO PØEÈINU (VÈETNÌ NEDBALOSTI) NA 
+JAKÉMKOLIV ZPÙSOBU POUITÍ MATERIÁLÙ KE ŠKOLENÍ, I V PØÍPADÌ, E DRITEL PRÁV 
+BYL UPOZORNÌN NA MONOST TAKOVİCH ŠKOD.
