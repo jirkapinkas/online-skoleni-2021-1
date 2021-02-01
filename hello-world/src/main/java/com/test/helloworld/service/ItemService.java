@@ -3,6 +3,7 @@ package com.test.helloworld.service;
 import com.test.helloworld.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class ItemService {
 //    @Value("${java.version}")
     private String javaVersion;
 
-    public ItemService(ItemRepository itemRepository, @Value("${java.version}") String javaVersion) {
+    public ItemService(@Qualifier("jdbcItemRepository") ItemRepository itemRepository, @Value("${java.version}") String javaVersion) {
         this.itemRepository = itemRepository;
         this.javaVersion = javaVersion;
     }
