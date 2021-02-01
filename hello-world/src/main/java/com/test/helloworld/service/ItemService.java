@@ -16,7 +16,7 @@ public class ItemService {
 //    @Value("${java.version}")
     private String javaVersion;
 
-    public ItemService(@Qualifier("jdbcItemRepository") ItemRepository itemRepository, @Value("${java.version}") String javaVersion) {
+    public ItemService(/*@Qualifier("jdbcItemRepository")*/ ItemRepository itemRepository, @Value("${java.version}") String javaVersion) {
         this.itemRepository = itemRepository;
         this.javaVersion = javaVersion;
     }
