@@ -8,10 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
+import java.util.Locale;
 
 @RestController
 public class HelloController {
@@ -48,6 +53,13 @@ public class HelloController {
                 .ok()
                 .contentType(mediaType)
                 .body(Files.readAllBytes(path));
+    }
+
+    // http://localhost:8080/lowlevel
+    @GetMapping("/lowlevel")
+    public void lowlevel(HttpServletRequest request, HttpServletResponse response,
+                         HttpSession session, Principal principal, Locale locale) throws IOException {
+        response.getWriter().println("lowlevel servlet-like access");
     }
 
 }
