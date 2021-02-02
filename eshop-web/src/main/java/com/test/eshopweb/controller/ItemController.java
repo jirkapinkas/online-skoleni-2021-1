@@ -1,5 +1,6 @@
 package com.test.eshopweb.controller;
 
+import com.test.eshopweb.dto.ItemDto;
 import com.test.eshopweb.entity.Item;
 import com.test.eshopweb.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +25,14 @@ public class ItemController {
 
     // http://localhost:8080/item
     @GetMapping
-    public List<Item> items() {
+    public List<ItemDto> items() {
         return itemService.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     // http://localhost:8080/item/1
     // http://localhost:8080/item/2
     @GetMapping("/{id}")
-    public Optional<Item> item(@PathVariable int id) {
+    public Optional<ItemDto> item(@PathVariable int id) {
         return itemService.findById(id);
     }
 
