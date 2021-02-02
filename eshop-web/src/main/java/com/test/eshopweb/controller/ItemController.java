@@ -49,12 +49,14 @@ public class ItemController {
     }
 
     // POST http://localhost:8080/item
+    @PostMapping
     public ItemDto insert(@RequestBody ItemDto dto) {
         dto.setId(0);
         return itemService.save(dto);
     }
 
     // PUT http://localhost:8080/item/6
+    @PutMapping("/{id}")
     public ItemDto update(@RequestBody ItemDto dto, @PathVariable int id) {
         dto.setId(id);
         return itemService.save(dto);
