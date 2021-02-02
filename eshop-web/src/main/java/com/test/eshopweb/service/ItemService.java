@@ -1,6 +1,7 @@
 package com.test.eshopweb.service;
 
 import com.test.eshopweb.dto.ItemDto;
+import com.test.eshopweb.entity.Item;
 import com.test.eshopweb.mapper.ItemMapper;
 import com.test.eshopweb.repository.ItemRepository;
 import org.springframework.data.domain.Sort;
@@ -30,5 +31,14 @@ public class ItemService {
                 .map(itemMapper::toDto);
     }
 
+    public ItemDto save(ItemDto itemDto) {
+        Item entity = itemMapper.toEntity(itemDto);
+        Item savedEntity = itemRepository.save(entity);
+        return itemMapper.toDto(savedEntity);
+    }
+
+    public void deleteById(int id) {
+        itemRepository.deleteById(id);
+    }
 
 }

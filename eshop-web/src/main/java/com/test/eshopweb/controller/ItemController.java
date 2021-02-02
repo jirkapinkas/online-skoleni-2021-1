@@ -48,4 +48,22 @@ public class ItemController {
         return itemService.findById(id);
     }
 
+    // POST http://localhost:8080/item
+    public ItemDto insert(@RequestBody ItemDto dto) {
+        dto.setId(0);
+        return itemService.save(dto);
+    }
+
+    // PUT http://localhost:8080/item/6
+    public ItemDto update(@RequestBody ItemDto dto, @PathVariable int id) {
+        dto.setId(id);
+        return itemService.save(dto);
+    }
+
+    // DELETE http://localhost:8080/item/6
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable int id) {
+        itemService.deleteById(id);
+    }
+
 }
