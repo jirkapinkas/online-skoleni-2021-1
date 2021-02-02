@@ -5,10 +5,7 @@ import com.test.eshopweb.entity.Item;
 import com.test.eshopweb.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,10 +20,25 @@ public class ItemController {
         this.itemService = itemService;
     }
 
+//    // http://localhost:8080/item
+//    @GetMapping
+//    public List<ItemDto> items() {
+//        return itemService.findAll(Sort.by(Sort.Direction.ASC, "id"));
+//    }
+//
+//    // http://localhost:8080/item?sort=name&direction=desc
+//    // http://localhost:8080/item?sort=name&direction=asc
+//    @GetMapping(params = {"sort", "direction"})
+//    public List<ItemDto> items(@RequestParam String sort, @RequestParam String direction) {
+//        return itemService.findAll(Sort.by(Sort.Direction.fromString(direction.toUpperCase()), sort));
+//    }
+
     // http://localhost:8080/item
+    // http://localhost:8080/item?sort=name&direction=desc
+    // http://localhost:8080/item?sort=name&direction=asc
     @GetMapping
-    public List<ItemDto> items() {
-        return itemService.findAll(Sort.by(Sort.Direction.ASC, "id"));
+    public List<ItemDto> items(@RequestParam(defaultValue = "id") String sort, @RequestParam(defaultValue = "ASC") String direction) {
+        return itemService.findAll(Sort.by(Sort.Direction.fromString(direction.toUpperCase()), sort));
     }
 
     // http://localhost:8080/item/1
