@@ -2,6 +2,7 @@ package com.test.eshopweb.service;
 
 import com.test.eshopweb.dto.ItemDto;
 import com.test.eshopweb.entity.Item;
+import com.test.eshopweb.exception.DeleteException;
 import com.test.eshopweb.mapper.ItemMapper;
 import com.test.eshopweb.repository.ItemRepository;
 import org.springframework.data.domain.Sort;
@@ -47,7 +48,12 @@ public class ItemServiceImpl implements ItemService {
     @Override
     @Transactional
     public void deleteById(int id) {
-        itemRepository.deleteById(id);
+        try {
+            itemRepository.deleteById(id);
+            itemRepository.flush(); // vynuti provedeni delete!!! Dulezite protoze tato operace je transakcni!!!
+        } catch (Exception e) {
+            throw new DeleteException("Cannot delete item with id: " + id);
+        }
     }
 
     @Override
