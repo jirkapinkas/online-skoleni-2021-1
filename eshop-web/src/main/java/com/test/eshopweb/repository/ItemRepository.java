@@ -55,4 +55,9 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
     // Pokrocilejsi metody jdou delat pres EntityManager:
     // https://dzone.com/articles/accessing-the-entitymanager-from-spring-data-jpa
 
+    // Jak na dynamicke selecty:
+    // Pomoci QueryDSL:
+    // https://www.baeldung.com/rest-api-search-language-spring-data-querydsl
+    // https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#core.extensions.querydsl
+
 }
