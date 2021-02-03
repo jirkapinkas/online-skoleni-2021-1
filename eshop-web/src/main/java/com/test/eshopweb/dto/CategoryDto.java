@@ -5,14 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ItemDto {
-
-    private int id;
+public class CategoryDto {
 
     private String name;
-
-    private double price;
-
-    private CategoryDto category;
-
 }
