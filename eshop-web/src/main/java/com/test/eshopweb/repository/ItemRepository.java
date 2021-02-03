@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -31,8 +32,8 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
     /*
      * Metody, ktere vykonaji select na zaklade HQL / JPQL
      */
-    @Query("select i from Item i where lower(i.name) like lower(?1)")
-    List<Item> searchInNames(String namePart); //namePart musi byt neco jako "%java%"
+    @Query("select i from Item i where lower(i.name) like lower(:namePart)")
+    List<Item> searchInNames(@Param("namePart") String namePart); //namePart musi byt neco jako "%java%"
     @Query("select i from Item i where lower(i.name) like lower(?1)")
     Page<Item> searchInNames(String namePart, Pageable pageable);
     @Query("select i from Item i where lower(i.name) like lower(?1)")
