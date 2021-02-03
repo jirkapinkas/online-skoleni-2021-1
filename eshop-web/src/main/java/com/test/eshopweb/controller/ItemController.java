@@ -68,4 +68,10 @@ public class ItemController {
         itemService.deleteById(id);
     }
 
+    // POST http://localhost:8080/item/1?newPrice=123
+    @PostMapping("/{id}")
+    public void updatePrice(@PathVariable int id, @RequestParam double newPrice) {
+        itemService.updatePrice(id, newPrice);
+    }
+
 }
