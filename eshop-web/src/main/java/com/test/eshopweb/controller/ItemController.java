@@ -1,9 +1,7 @@
 package com.test.eshopweb.controller;
 
 import com.test.eshopweb.dto.ItemDto;
-import com.test.eshopweb.entity.Item;
 import com.test.eshopweb.service.ItemService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
