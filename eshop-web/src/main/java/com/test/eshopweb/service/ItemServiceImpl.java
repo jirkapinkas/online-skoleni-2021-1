@@ -5,6 +5,9 @@ import com.test.eshopweb.entity.Item;
 import com.test.eshopweb.exception.DeleteException;
 import com.test.eshopweb.mapper.ItemMapper;
 import com.test.eshopweb.repository.ItemRepository;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,12 +28,14 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Cacheable("items")
     @Transactional(readOnly = true)
     public List<ItemDto> findAll(Sort sort) {
         return itemMapper.toDto(itemRepository.findAll(sort));
     }
 
     @Override
+    @Cacheable(cacheNames = "item", key = "#id")
     @Transactional(readOnly = true)
     public Optional<ItemDto> findById(int id) {
         return itemRepository.findById(id)
@@ -38,6 +43,10 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(cacheNames = "items", allEntries = true),
+            @CacheEvict(cacheNames = "item", key = "#itemDto.id")
+    })
     @Transactional
     public ItemDto save(ItemDto itemDto) {
         Item entity = itemMapper.toEntity(itemDto);
@@ -46,6 +55,10 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(cacheNames = "items", allEntries = true),
+            @CacheEvict(cacheNames = "item", key = "#id")
+    })
     @Transactional
     public void deleteById(int id) {
         try {
@@ -57,6 +70,10 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(cacheNames = "items", allEntries = true),
+            @CacheEvict(cacheNames = "item", key = "#id")
+    })
     @Transactional
     public void updatePrice(int id, double newPrice) {
         Optional<Item> optional = itemRepository.findById(id);
