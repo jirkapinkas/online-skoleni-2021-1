@@ -64,6 +64,9 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
     @Query("select i from Item i where lower(i.name) like lower(?1)")
     List<Item> searchInNames(String namePart, Sort sort);
 
+    @Query("select i.name, i.price from Item i")
+    List<Object[]> find();
+
     /*
      * Metody, ktere vykonaji select na zaklade SQL
      */
