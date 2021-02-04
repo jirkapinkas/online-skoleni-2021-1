@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,14 +53,14 @@ public class ItemController {
 
     // POST http://localhost:8080/item
     @PostMapping
-    public ItemDto insert(@RequestBody ItemDto dto) {
+    public ItemDto insert(@RequestBody @Valid ItemDto dto) {
         dto.setId(0);
         return itemService.save(dto);
     }
 
     // PUT http://localhost:8080/item/6
     @PutMapping("/{id}")
-    public ItemDto update(@RequestBody ItemDto dto, @PathVariable int id) {
+    public ItemDto update(@RequestBody @Valid ItemDto dto, @PathVariable int id) {
         dto.setId(id);
         return itemService.save(dto);
     }
