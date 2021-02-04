@@ -27,13 +27,13 @@ public class ItemServiceImpl implements ItemService {
     @Override
     @Transactional(readOnly = true)
     public List<ItemDto> findAll(Sort sort) {
-        return itemMapper.toDto(itemRepository.findAll(sort));
+        return itemMapper.toDto(itemRepository.findAllFetchCategory(sort));
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<ItemDto> findById(int id) {
-        return itemRepository.findById(id)
+        return itemRepository.findByIdFetchCategory(id)
                 .map(itemMapper::toDto);
     }
 

@@ -22,7 +22,7 @@ public class Item {
 
     private double price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) // toto je best practice! (viz. Hibernate dokumentace)
     @JoinColumn(name = "category_id")
     private Category category;
 

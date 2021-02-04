@@ -15,6 +15,14 @@ import java.util.Optional;
 
 public interface ItemRepository extends JpaRepository<Item, Integer> {
 
+    // select * from item left join category on item.category_id = category.category_id
+    @Query("select i from Item i left join fetch i.category")
+    List<Item> findAllFetchCategory(Sort sort);
+
+    // select * from item left join category on item.category_id = category.category_id where item.item_id = ?1
+    @Query("select i from Item i left join fetch i.category where i.id = ?1")
+    Optional<Item> findByIdFetchCategory(int id);
+
     /*
      * Metody, ktere vykonaji prislusny select na zaklade jejich nazvu
      */
