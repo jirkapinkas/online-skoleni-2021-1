@@ -5,6 +5,7 @@ import com.test.eshopweb.entity.Item;
 import com.test.eshopweb.exception.DeleteException;
 import com.test.eshopweb.mapper.ItemMapper;
 import com.test.eshopweb.repository.ItemRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class ItemServiceImpl implements ItemService {
 
@@ -80,5 +82,13 @@ public class ItemServiceImpl implements ItemService {
         optional.ifPresent(item -> {
             item.setPrice(newPrice);
         });
+    }
+
+    @Caching(evict = {
+            @CacheEvict(cacheNames = "items", allEntries = true),
+            @CacheEvict(cacheNames = "item", allEntries = true)
+    })
+    public void clearCache() {
+        log.info("cache cleared!");
     }
 }
