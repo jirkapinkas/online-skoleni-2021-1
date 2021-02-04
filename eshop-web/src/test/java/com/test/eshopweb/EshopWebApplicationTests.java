@@ -8,11 +8,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.data.domain.Sort;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 
+@Transactional // Diky teto anotaci se po kazdem testu automaticky zavola ROLLBACK
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class EshopWebApplicationTests {
 
@@ -38,6 +41,22 @@ class EshopWebApplicationTests {
                 .isNotEmpty()
                 .extracting(ItemDto::getId)
                 .contains(1, 2, 3, 4, 5);
+    }
+
+    @Test
+    void saveTest() {
+        ItemDto dto = new ItemDto();
+        dto.setName("Aaa");
+        dto.setPrice(123);
+        ItemDto savedDto = itemService.save(dto);
+        assertThat(savedDto.getId())
+                .isNotZero();
+        Optional<ItemDto> optionalItemDto = itemService.findById(savedDto.getId());
+        assertThat(optionalItemDto)
+                .isPresent()
+                .get()
+                .extracting(ItemDto::getId)
+                .isEqualTo(savedDto.getId());
     }
 
     @Test
