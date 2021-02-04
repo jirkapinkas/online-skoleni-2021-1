@@ -4,6 +4,7 @@ import com.test.eshopweb.entity.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -15,13 +16,29 @@ import java.util.Optional;
 
 public interface ItemRepository extends JpaRepository<Item, Integer> {
 
+    /*
+     * Efektivni tvorba selectu, varianta 1:
+     * left join fetch
+     */
     // select * from item left join category on item.category_id = category.category_id
-    @Query("select i from Item i left join fetch i.category")
-    List<Item> findAllFetchCategory(Sort sort);
+//    @Query("select i from Item i left join fetch i.category")
+//    List<Item> findAllFetchCategory(Sort sort);
 
     // select * from item left join category on item.category_id = category.category_id where item.item_id = ?1
-    @Query("select i from Item i left join fetch i.category where i.id = ?1")
-    Optional<Item> findByIdFetchCategory(int id);
+//    @Query("select i from Item i left join fetch i.category where i.id = ?1")
+//    Optional<Item> findByIdFetchCategory(int id);
+
+    /*
+     * Efektivni tvorba selectu, varianta 2:
+     * entity graph
+     */
+    @Override
+    @EntityGraph(Item.GRAPH_CATEGORY)
+    List<Item> findAll(Sort sort);
+
+    @Override
+    @EntityGraph(Item.GRAPH_CATEGORY)
+    Optional<Item> findById(Integer integer);
 
     /*
      * Metody, ktere vykonaji prislusny select na zaklade jejich nazvu

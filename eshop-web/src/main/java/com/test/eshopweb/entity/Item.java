@@ -8,8 +8,16 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
+@NamedEntityGraph(
+        name = Item.GRAPH_CATEGORY,
+        attributeNodes = {
+                @NamedAttributeNode("category")
+        })
 //@Table(name = "item")
 public class Item {
+
+    // Unikatni nazev!!!
+    public static final String GRAPH_CATEGORY = "Item.graph.category";
 
     @Id
     @Column(name = "item_id")
