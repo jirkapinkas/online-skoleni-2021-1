@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @EnableWebSecurity
@@ -41,6 +42,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         .roles("USER")
                         .build();
         return new InMemoryUserDetailsManager(user);
+    }
+
+    public static void main(String[] args) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        System.out.println(encoder.encode("jirka"));
+        System.out.println(encoder.encode("jirka"));
+        System.out.println(encoder.encode("jirka"));
+        System.out.println(encoder.encode("jirka"));
+        System.out.println(encoder.encode("jirka"));
+        System.out.println(encoder.matches("jirka", "$2a$10$y8EIT12eqssQDPJEuHmik.Oezve4210VYNBMQnWJ8VojE0akRtqOi"));
     }
 
 }
